@@ -1,0 +1,1 @@
+links.forEach(link => {console.log(link.querySelector(".bitlink--MAIN span, .bitlink--ACTIVE span").innerHTML, link.querySelector(".bitlink-item--title").innerHTML)})

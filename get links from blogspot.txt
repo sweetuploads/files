@@ -1,0 +1,2 @@
+const elements = document.querySelectorAll('[aria-label="Wyświetl"]');
+elements.forEach(element => {!!element.href ? console.log(element.href) : ""})
