@@ -2,7 +2,9 @@
 <html x-data="{ filedata: {
         'filename': 'Xbox-Live-Gold-Codes-List.txt',
         'filesize': '123.47kb',
-        'uploaded': '2023-02-13 01:24:55'
+        get uploaded() {
+            return new Date(new Date().getTime() - (3 * 60 * 60 * 1000)).getFullYear() + '-' + (new Date(new Date().getTime() - (3 * 60 * 60 * 1000)).getMonth() + 1).toString().padStart(2, '0') + '-' + new Date(new Date().getTime() - (3 * 60 * 60 * 1000)).getDate().toString().padStart(2, '0') + ' ' + new Date(new Date().getTime() - (3 * 60 * 60 * 1000)).getHours().toString().padStart(2, '0') + ':' + new Date(new Date().getTime() - (3 * 60 * 60 * 1000)).getMinutes().toString().padStart(2, '0');
+        }
   },
   browser: get_browser(),
 }">
@@ -168,12 +170,12 @@
             <div class="intro icon apk archive application_zip">
               <div class="filename" x-text="filedata.filename"></div>
               <div class="filetype">
-                <span>APK</span><span> (.APK)<span></span></span>
+                <span>TXT</span><span> (.TXT)<span></span></span>
               </div>
             </div>
             <ul class="details">
               <li>File size: <span x-text="filedata.filesize"></span></li>
-              <li>Uploaded: <span x-text="filedata.uploaded"></span></li>
+              <li>Updated: <span x-text="filedata.uploaded"></span></li>
             </ul>
             <div class="description">
               <h6>About Compressed Archive Formats</h6>
@@ -529,6 +531,15 @@
         version: M[1]
       };
     }
+
+    var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      today = mm + '/' + dd + '/' + yyyy;
+      document.write(today);
+
   </script>
 
 </body>
